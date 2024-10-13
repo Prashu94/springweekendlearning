@@ -1,0 +1,26 @@
+#tag::portNineThousand[]
+server:
+  port: 9000
+#end::portNineThousand[]
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springauthentication
+    username: prashant
+    password: admin123@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG

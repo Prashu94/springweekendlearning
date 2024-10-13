@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TacoCloudChapter01Application<io.spring.learning-taco-cloud-chapter01>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "io.spring.learning.TacoCloudChapter01Application",
+            "projectName": "io.spring.learning-taco-cloud-chapter01",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
