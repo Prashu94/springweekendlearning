@@ -3,6 +3,8 @@ package io.spring.learning.example.model;
 import io.spring.learning.example.annotation.FieldsValueMatch;
 import io.spring.learning.example.annotation.PasswordValidator;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.*;
@@ -11,7 +13,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-@Data
+@Getter
+@Setter
 @Entity
 @FieldsValueMatch.List({
         @FieldsValueMatch(
@@ -66,4 +69,8 @@ public class Person extends BaseEntity{
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, targetEntity = Address.class)
     @JoinColumn(name = "address_id", referencedColumnName = "addressId",nullable = true)
     private Address address;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "class_id", referencedColumnName = "classId", nullable = true)
+    private EazyClass eazyClass;
 }
