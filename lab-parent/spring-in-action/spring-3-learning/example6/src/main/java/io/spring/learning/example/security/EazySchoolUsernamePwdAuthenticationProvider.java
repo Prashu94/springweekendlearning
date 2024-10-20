@@ -4,6 +4,7 @@ import io.spring.learning.example.model.Person;
 import io.spring.learning.example.model.Roles;
 import io.spring.learning.example.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Profile("prod")
 public class EazySchoolUsernamePwdAuthenticationProvider
         implements AuthenticationProvider
 {

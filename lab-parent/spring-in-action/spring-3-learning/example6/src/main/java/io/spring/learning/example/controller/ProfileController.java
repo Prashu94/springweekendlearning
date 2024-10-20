@@ -17,8 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+
 @Slf4j
-@Controller
+@Controller("profileControllerBean")
 public class ProfileController {
 
     @Autowired

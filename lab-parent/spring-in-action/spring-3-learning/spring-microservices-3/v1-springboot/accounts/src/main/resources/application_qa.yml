@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related QA APIs"
+  contactDetails:
+    name: "Deval Shah - QA Lead"
+    email: "deval@gmail.com"
+  onCallSupport:
+    - 9999999999
+    - 9999999998

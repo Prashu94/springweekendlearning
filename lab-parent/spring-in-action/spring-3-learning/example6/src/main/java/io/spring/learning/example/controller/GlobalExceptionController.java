@@ -31,6 +31,7 @@ public class GlobalExceptionController {
         }else if (exception!=null){
             errorMsg = exception.toString();
         }
+        log.info(errorMsg);
         errorPage.addObject("errormsg", errorMsg);
         return errorPage;
     }

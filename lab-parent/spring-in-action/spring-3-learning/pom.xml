@@ -24,6 +24,8 @@
         <module>example4</module>
         <module>example5</module>
         <module>example06</module>
+        <module>example6</module>
+        <module>example6client</module>
     </modules>
 
 </project>

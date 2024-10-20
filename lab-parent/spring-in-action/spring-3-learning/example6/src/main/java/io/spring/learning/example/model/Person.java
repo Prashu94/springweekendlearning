@@ -1,5 +1,6 @@
 package io.spring.learning.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.spring.learning.example.annotation.FieldsValueMatch;
 import io.spring.learning.example.annotation.PasswordValidator;
 import lombok.Data;
@@ -12,6 +13,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -50,16 +54,19 @@ public class Person extends BaseEntity{
     @NotBlank(message="Confirm Email must not be blank")
     @Email(message = "Please provide a valid confirm email address" )
     @Transient
+    @JsonIgnore
     private String confirmEmail;
 
     @NotBlank(message="Password must not be blank")
     @Size(min=5, message="Password must be at least 5 characters long")
     @PasswordValidator
+    @JsonIgnore
     private String pwd;
 
     @NotBlank(message="Confirm Password must not be blank")
     @Size(min=5, message="Confirm Password must be at least 5 characters long")
     @Transient
+    @JsonIgnore
     private String confirmPwd;
 
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST, targetEntity = Roles.class)
@@ -70,7 +77,18 @@ public class Person extends BaseEntity{
     @JoinColumn(name = "address_id", referencedColumnName = "addressId",nullable = true)
     private Address address;
 
+    // person table has class_id as foreign key
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "class_id", referencedColumnName = "classId", nullable = true)
     private EazyClass eazyClass;
+
+    // person_courses is the table with person_id and course_id as foreign keys- join column is
+    // person_id and inverse join column is course_id
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "person_courses", joinColumns = {
+            @JoinColumn(name = "person_id", referencedColumnName = "personId")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "course_id", referencedColumnName = "courseId")
+    })
+    private Set<Courses> courses = new HashSet<>();
 }

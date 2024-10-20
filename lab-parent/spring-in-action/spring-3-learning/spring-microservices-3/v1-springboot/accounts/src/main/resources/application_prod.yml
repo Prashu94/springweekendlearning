@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related PROD APIs"
+  contactDetails:
+    name: "Swapnil Mishra - Product Owner"
+    email: "swapnil@gmail.com"
+  onCallSupport:
+    - 9999999997
+    - 9999999996
